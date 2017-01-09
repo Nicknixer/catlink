@@ -2,12 +2,82 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Каталог сайтов Linkcat{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ asset('libs/style.css') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('libs/e-book.png') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    	<nav>
+		<ul>
+			<li>
+				<a href="#">ГЛАВНАЯ</a>
+			</li>
+			<li>
+				<a href="#">ОБРАТНАЯ СВЯЗЬ</a>
+			</li>
+			<li>
+				<a href="#">РЕКЛАМА</a>
+			</li>
+			<li>
+				<a href="#" id="add-site">ДОБАВИТЬ САЙТ</a>
+			</li>
+			<div class="search">
+				<input type="search" name="search" id="searcher" placeholder="Поиск по сайту" />
+				<input id="find" type="button" name="search" value="Найти" />
+			</div>
+		</ul>
+
+	</nav>
+	<div class="content">
+		<div class="title-top">
+			<h1>
+				<a href="/">Каталог сайтов</a>
+			</h1>
+		</div>
+		{% block sidebar %}
+			<div class="left-side-bar">
+				<div class="left-side-menu">Категории каталога</div>
+					<div class="left-side-items">
+						<a href="#">Категория 1</a> (4)
+						<a href="#">Категория 2</a> (0)
+						<a href="#">Категория 3</a> (6)
+					</div>
+				<div class="left-side-menu">Статистика каталога</div>
+				<div class="left-side-items">
+			    		<span class="color-corn">Добавлено сайтов:</span> 10
+				</div>
+				<div class="left-side-items">
+				    	<span class="color-corn">Комментариев:</span> 0
+				</div>
+				<div class="left-side-items">
+					<span class="color-corn">Последний сайт:</span>
+					<a style="text-decoration: underline;" href="#">ХХХ</a>
+				</div>
+			</div>
+		{% endblock %}
+		<div class="page">
+			{% block body %}
+				Body
+			{% endblock %}
+		</div>
+	</div>
+	{% block footer %}
+	<footer>
+		<div class="bottom-phone">
+			&copy; "Linkcat" Все права защищены.
+		</div>
+		<div class="bottom-copy">
+			<div class="bottom-logo"><img src="{{ asset('libs/logo.png') }}" width="30px" height="30px" align="middle"/></div>
+			<div class="bottom-text">
+					<a href="http://nicknixer.ru">Разработка сайта</a>
+					<br/>
+					Записки информационщика
+			</div>
+		</div>
+	</footer>
+	{% endblock %}
+	{% block javascripts %}{% endblock %}
     </body>
 </html>
