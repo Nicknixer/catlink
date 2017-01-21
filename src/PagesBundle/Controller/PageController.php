@@ -7,6 +7,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class PageController extends Controller
 {
+
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function homepageAction()
+    {
+        return $this->render('PagesBundle:Default:homepage.html.twig');
+    }
+
     /**
      * @Route("/about", name="about")
      */
