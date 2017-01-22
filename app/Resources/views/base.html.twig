@@ -2,10 +2,13 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Каталог сайтов Linkcat{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
-        <link rel="stylesheet" href="{{ asset('libs/style.css') }}" />
+		<meta name="description"  content="{% block meta_description %}Белый каталог сайтов, добавьте свой сайт бесплатно.{% endblock %}" />
+		<meta name="keywords"  content="{% block meta_keywords %}Белый,каталог,сайты,бесплатно{% endblock %}" />
+        <title>{% block title %}Linkcat{% endblock %}</title>
+        {% block stylesheets %}
+			<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
+			<link rel="stylesheet" href="{{ asset('libs/style.css') }}" />
+		{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('libs/e-book.png') }}" />
     </head>
     <body>
