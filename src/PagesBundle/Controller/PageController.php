@@ -13,7 +13,17 @@ class PageController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render('PagesBundle:Default:homepage.html.twig');
+        $sites = $this->getDoctrine()
+            ->getRepository('AppBundle:Site')
+            ->findBy([
+                'isModerated' => 1
+            ],[
+                'id' => 'ASC'
+            ], 5); // Last 5 sites
+
+        return $this->render('PagesBundle:Default:homepage.html.twig', [
+            'sites' => $sites
+        ]);
     }
 
     /**
