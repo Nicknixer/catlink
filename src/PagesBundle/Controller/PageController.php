@@ -77,7 +77,7 @@ class PageController extends Controller
             $this->get('mailer')->send($message);
 
             return $this->render('PagesBundle:Default:feedback_success.html.twig', [
-                'name' => $form->get('name')->getData()
+                'name' => $user_name
             ]);
         }
         return $this->render('PagesBundle:Default:feedback.html.twig', [
