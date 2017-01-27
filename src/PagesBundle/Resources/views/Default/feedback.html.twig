@@ -3,9 +3,26 @@
 {% block body %}
 <div class="site-block">
 	<div class="title-site"><strong>Обратная связь</strong></div>
+	{{  form_start(form) }}
 	<div class="info-site">
-	    Контакты для связи с администратором сайта:<br/>
-	    Email: <strong>nicknixer</strong> [doooog] <strong>gmail.com</strong><br />
+	    <table>
+			<tr>
+				<td>Имя: </td>
+				<td>{{ form_widget(form.name) }}</td>
+			</tr>
+			<tr>
+				<td>Email: </td>
+				<td>{{ form_widget(form.email) }}</td>
+			</tr>
+			<tr>
+				<td>Сообщение:</td>
+				<td>{{ form_widget(form.message) }}</td>
+			</tr>
+			<tr>
+				<td>{{ form_widget(form.send) }}</td>
+			</tr>
+		</table>
 	</div>
+	{{ form_end(form) }}
 </div>
 {% endblock %}

@@ -4,6 +4,11 @@ namespace PagesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PageController extends Controller
 {
@@ -45,8 +50,26 @@ class PageController extends Controller
     /**
      * @Route("/feedback", name="feedback")
      */
-    public function feedbackAction()
+    public function feedbackAction(Request $request)
     {
-        return $this->render('PagesBundle:Default:feedback.html.twig');
+        $form = $this->createFormBuilder()
+            ->add('name', TextType::class)
+            ->add('email', EmailType::class)
+            ->add('message', TextareaType::class)
+            ->add('send', SubmitType::class, [
+                'label' => 'Отправить'
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()  && $form->isValid()) {
+            return $this->render('PagesBundle:Default:feedback_success.html.twig', [
+                'name' => $form->get('name')->getData()
+            ]);
+        }
+        return $this->render('PagesBundle:Default:feedback.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
