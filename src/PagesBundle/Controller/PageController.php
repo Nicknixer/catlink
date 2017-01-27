@@ -64,6 +64,18 @@ class PageController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted()  && $form->isValid()) {
+            $user_name = $form->get('name')->getData();
+            $user_email = $form->get('email')->getData();
+            $user_message = $form->get('message')->getData();
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Mail from user ' . $user_name)
+                ->setFrom($user_email)
+                ->setTo('nicknixer@gmail.com')
+                ->setBody(
+                    $user_message.'
+Обратный адрес: ' . $user_email);
+            $this->get('mailer')->send($message);
+
             return $this->render('PagesBundle:Default:feedback_success.html.twig', [
                 'name' => $form->get('name')->getData()
             ]);
