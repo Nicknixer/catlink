@@ -15,6 +15,24 @@ class SidebarController extends Controller
      */
     public function showSidebarAction()
     {
-        return $this->render('AppBundle:Default:sidebar.html.twig');
+        return $this->render('AppBundle:Default:sidebar.html.twig',[
+            'sitesAmount' => $this->getSiteAmount(),
+        ]);
+    }
+
+    /*
+     * Count all moderated sites
+     * @return Integer - site amount
+     */
+    private function getSiteAmount()
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Site');
+
+        return $repository->createQueryBuilder('s')
+            ->select('count(s.id)')
+            ->where('s.id = 1')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 }
