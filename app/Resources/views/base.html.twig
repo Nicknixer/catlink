@@ -41,27 +41,9 @@
 		</div>
 		{% block sidebar %}
 			<div class="left-side-bar">
-				<div class="left-side-menu">Категории каталога</div>
-					<div class="left-side-items">
-						<a href="#">Категория 1</a> (4)
-					</div>
-					<div class="left-side-items">
-						<a href="#">Категория 2</a> (0)
-					</div>
-					<div class="left-side-items">
-						<a href="#">Категория 3</a> (6)
-					</div>
-				<div class="left-side-menu">Статистика каталога</div>
-				<div class="left-side-items">
-			    		<span class="color-corn">Добавлено сайтов:</span> 10
-				</div>
-				<div class="left-side-items">
-				    	<span class="color-corn">Комментариев:</span> 0
-				</div>
-				<div class="left-side-items">
-					<span class="color-corn">Последний сайт:</span>
-					<a style="text-decoration: underline;" href="#">ХХХ</a>
-				</div>
+				{{ render(controller(
+					'AppBundle:Sidebar:showSidebar'
+				)) }}
 			</div>
 		{% endblock %}
 		<div class="page">
