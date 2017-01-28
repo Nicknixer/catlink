@@ -11,7 +11,9 @@
     <span class="color-corn">Комментариев:</span> 0
 </div>
 -->
+{% if lastSite.id is defined %}
 <div class="left-side-items">
     <span class="color-corn">Последний сайт:</span>
-    <a style="text-decoration: underline;" href="#">ХХХ</a>
+    <a style="text-decoration: underline;" href="{{ path('showSite', {'id': lastSite.id}) }}">{{ lastSite.title }}</a>
 </div>
+{% endif %}

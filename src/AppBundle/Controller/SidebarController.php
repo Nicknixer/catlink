@@ -17,6 +17,7 @@ class SidebarController extends Controller
     {
         return $this->render('AppBundle:Default:sidebar.html.twig',[
             'sitesAmount' => $this->getSiteAmount(),
+            'lastSite' => $this->getLastSite(),
         ]);
     }
 
@@ -34,5 +35,18 @@ class SidebarController extends Controller
             ->where('s.id = 1')
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    /*
+     * Get last added site
+     * @return Site
+     */
+    private function getLastSite()
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Site');
+
+        return $repository->
+            findOneBy(['isModerated' => '1'],['id' => 'DESC']);
     }
 }
