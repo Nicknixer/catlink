@@ -67,14 +67,11 @@ class PageController extends Controller
             $user_name = $form->get('name')->getData();
             $user_email = $form->get('email')->getData();
             $user_message = $form->get('message')->getData();
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Mail from user ' . $user_name)
-                ->setFrom($user_email)
-                ->setTo('nicknixer@gmail.com')
-                ->setBody(
-                    $user_message.'
-Обратный адрес: ' . $user_email);
-            $this->get('mailer')->send($message);
+            $this->sendFeedbackMessage(
+                $user_name,
+                $user_email,
+                $user_message
+            );
 
             return $this->render('PagesBundle:Default:feedback_success.html.twig', [
                 'name' => $user_name
@@ -83,5 +80,26 @@ class PageController extends Controller
         return $this->render('PagesBundle:Default:feedback.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /*
+     * Send message to admin email
+     *
+     * @param String $name  - User name
+     * @param String $email - User email
+     * @param String $message - Message from user
+     */
+    private function sendFeedbackMessage($name, $email, $message){
+        $email_message = \Swift_Message::newInstance()
+            ->setSubject('Mail from user ' . $name)
+            ->setFrom($email)
+            ->setTo('nicknixer@gmail.com')
+            ->setBody(
+                $message .
+                '<br /><br />=============<br />Обратный адрес: ' .
+                $email,
+                'text/html'
+            );
+        $this->get('mailer')->send($email_message);
     }
 }
