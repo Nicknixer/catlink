@@ -12,12 +12,13 @@
             Вперед! Добавьте свой сайт.
         </div>
     </div>
-    {% for site in sites %}
-        <div class="site-block">
-            <div class="title-site"><b>{{ site.title }}</b></div>
-            <div class="info-site">{{ site.shortdescription }}</div>
-            <div class="info-site"><a href="{{ path('showSite', {'id': site.id}) }}">Подробнее</a></div>
+    {% if sites[0] is defined %}
+        <div class="site-block"><div class="title-site"><b>Самые популярные в каталоге</b></div>
+            {% for site in sites %}
+                    <div class="info-site"><a href="{{ path('showSite', {'id': site.id}) }}"><strong>{{ site.title }}</strong></a></div>
+                    <div class="info-site">{{ site.shortdescription }}</div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    {% endif %}
 
 {% endblock %}
