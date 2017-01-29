@@ -32,7 +32,7 @@ class SidebarController extends Controller
 
         return $repository->createQueryBuilder('s')
             ->select('count(s.id)')
-            ->where('s.id = 1')
+            ->where('s.isModerated = 1')
             ->getQuery()
             ->getSingleScalarResult();
     }
