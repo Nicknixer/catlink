@@ -18,6 +18,7 @@ class SidebarController extends Controller
         return $this->render('AppBundle:Default:sidebar.html.twig',[
             'sitesAmount' => $this->getSiteAmount(),
             'lastSite' => $this->getLastSite(),
+            'categories' => $this->getAllCategory(),
         ]);
     }
 
@@ -48,5 +49,20 @@ class SidebarController extends Controller
 
         return $repository->
             findOneBy(['isModerated' => '1'],['id' => 'DESC']);
+    }
+
+    /*
+     * Get all category
+     * @return Array of Category
+     */
+    private function getAllCategory() {
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Category');
+
+        return $repository->
+        findBy(
+            [],
+            ['name' => 'ASC']
+        );
     }
 }

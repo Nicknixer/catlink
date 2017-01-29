@@ -1,7 +1,11 @@
-<div class="left-side-menu">Категории каталога</div>
-<div class="left-side-items">
-    <a href="#">Категория 1</a> (4)
-</div>
+{% if categories[0] is defined %}
+    <div class="left-side-menu">Категории каталога</div>
+    {% for category in categories %}
+        <div class="left-side-items">
+            <a href="#">{{ category.name }}</a>
+        </div>
+     {% endfor %}
+{% endif %}
 <div class="left-side-menu">Статистика каталога</div>
 <div class="left-side-items">
     <span class="color-corn">Добавлено сайтов:</span> {{ sitesAmount }}
