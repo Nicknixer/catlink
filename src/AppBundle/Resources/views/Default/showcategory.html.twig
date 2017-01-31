@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ parent() }} - {{ category.name }}{% endblock %}
+{% block breadcrumbs %}{{ parent() }} - {{ category.name }}{% endblock %}
 {% block body %}
     <div class="site-block"><div class="title-site">Сайты из категории <strong>{{ category.name }}</strong></div>
         {% for site in sites %}
