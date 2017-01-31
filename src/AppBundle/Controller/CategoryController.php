@@ -26,9 +26,14 @@ class CategoryController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
+        $sites = $category->getSites()->filter(function ($site) {
+            return $site->getIsModerated() == 1;
+        }); // Get moderated sites
+
         return $this->render('AppBundle:Default:showcategory.html.twig', [
             'category' => $category,
-            'sites' => $category->getSites()
+            'sites' => $sites
+
         ]);
     }
 }
