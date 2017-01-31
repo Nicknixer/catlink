@@ -2,7 +2,7 @@
     <div class="left-side-menu">Категории каталога</div>
     {% for category in categories %}
         <div class="left-side-items">
-            <a href="#">{{ category.name }}</a>
+            <a href="{{ path('showCategory', {'id': category.id}) }}">{{ category.name }}</a>
         </div>
      {% endfor %}
 {% endif %}
