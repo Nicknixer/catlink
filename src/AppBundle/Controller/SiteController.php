@@ -30,7 +30,8 @@ class SiteController extends Controller
         }
 
         return $this->render('AppBundle:Default:showsite.html.twig', [
-            'site' => $site
+            'site' => $site,
+            'category' => $site->getCategory()
         ]);
     }
 }

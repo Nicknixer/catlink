@@ -2,6 +2,7 @@
 {% block title %}{{ parent() }} - {{ site.shortdescription }}{% endblock %}
 {% block meta_description %}{{ site.shortdescription }}{% endblock %}
 {% block meta_keywords %}{{ site.keywords }}{% endblock %}
+{% block breadcrumbs %}{{ parent() }} - <a href="{{ path('showCategory', {'id': category.id}) }}">{{ category.name }}</a> - {{ site.title|slice(0,20) }}...{% endblock %}
 {% block body %}
     <div class="site-block">
         <div class="title-site"><b>Информация о сайте</b></div>
