@@ -1,12 +1,12 @@
 {% if categories[0] is defined %}
-    <div class="left-side-menu">Категории каталога</div>
+    <div class="left-side-menu">Категории</div>
     {% for category in categories %}
         <div class="left-side-items">
             <a href="{{ path('showCategory', {'id': category.id}) }}">{{ category.name }}</a>
         </div>
      {% endfor %}
 {% endif %}
-<div class="left-side-menu">Статистика каталога</div>
+<div class="left-side-menu">Статистика</div>
 <div class="left-side-items">
     <span class="color-corn">Добавлено сайтов:</span> {{ sitesAmount }}
 </div>
