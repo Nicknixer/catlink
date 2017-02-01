@@ -34,10 +34,9 @@
 
 	</nav>
 	<div class="content">
-		<div class="title-top">
-			<h1>
-				{% block breadcrumbs %}<a href="/">Каталог сайтов</a>{% endblock %}
-			</h1>
+		<!-- title top  class="title-top"-->
+		<div  style=" font-size: 14px; padding: 5px;">
+			{% block breadcrumbs %}<a href="{{ path('homepage') }}">Главная</a>{% endblock %}
 		</div>
 		{% block sidebar %}
 			<div class="left-side-bar">
@@ -47,6 +46,7 @@
 			</div>
 		{% endblock %}
 		<div class="page">
+
 			{% block body %}
 				Body
 			{% endblock %}
