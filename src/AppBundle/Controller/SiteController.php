@@ -4,8 +4,17 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use AppBundle\Entity\Site;
+use Symfony\Component\HttpFoundation\Response;
 
 class SiteController extends Controller
 {
@@ -33,5 +42,48 @@ class SiteController extends Controller
             'site' => $site,
             'category' => $site->getCategory()
         ]);
+    }
+
+    /**
+     *
+     * @Route("/add", name="addSite")
+     *
+     */
+    public function addSite(Request $request)
+    {
+        $site = new Site();
+        $site->setTitle("Название");
+        $form = $this->createFormBuilder($site)
+            ->add('title', TextType::class)
+            ->add('url', UrlType::class)
+            ->add('email', EmailType::class)
+            ->add('category', ChoiceType::class, [
+                'choices' => $this->getDoctrine()->getRepository('AppBundle:Category')->findAll(),
+                'choice_label' => function($category, $key, $index) {
+                    return $category->getName();
+                }
+            ])
+            ->add('shortDescription', TextareaType::class)
+            ->add('description', TextareaType::class)
+            ->add('keywords', TextType::class)
+            ->add('add', SubmitType::class, array('label' => 'Добавить'))
+            ->getForm();
+
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $site = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($site);
+            $em->flush();
+
+            return $this->render('AppBundle:Site:successAddingSite.html.twig', array(
+                'site' => $site,
+            ));
+        }
+
+        return $this->render('AppBundle:Site:addSite.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }

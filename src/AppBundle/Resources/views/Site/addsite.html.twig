@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Добавление сайта{% endblock %}
+{% block breadcrumbs %}
+    {{ parent() }} / Добавление сайта...
+{% endblock %}
+{% block body %}
+    <div class="site-block">
+        <div class="title-site"><strong>Добавление сайта</strong></div>
+        {{  form_start(form) }}
+        <div class="info-site">
+            {{ form_errors(form) }}
+            <table>
+                <tr>
+                    <td>Название: </td>
+                    <td>{{ form_widget(form.title) }}</td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td>{{ form_widget(form.email) }}</td>
+                </tr>
+                <tr>
+                    <td>URL: </td>
+                    <td>{{ form_widget(form.url) }}</td>
+                </tr>
+                <tr>
+                    <td>Категория:</td>
+                    <td>{{ form_widget(form.category) }}</td>
+                </tr>
+                <tr>
+                    <td>Короткое описание:</td>
+                    <td>{{ form_widget(form.shortDescription) }}</td>
+                </tr>
+                <tr>
+                    <td>Полное описание:</td>
+                    <td>{{ form_widget(form.description) }}</td>
+                </tr>
+                <tr>
+                    <td>Ключевые слова:</td>
+                    <td>{{ form_widget(form.keywords) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_widget(form.add) }}</td>
+                </tr>
+            </table>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Успешное добавление{% endblock %}
+{% block breadcrumbs %}
+    {{ parent() }} / Успешное добавление...
+{% endblock %}
+{% block body %}
+    <div class="site-block">
+        <div class="title-site"><b>Добавление сайта</b></div>
+        <div class="info-site"><b>Дата добавления:</b> {{ site.date|date("m/d/Y") }}</div>
+        <div class="info-site"><b>Адрес:</b> <a href="{{ site.url }}">{{ site.url }}</a></div>
+        <div class="info-site"><b>Короткое описание:</b> {{ site.shortDescription }}</div>
+        <div class="info-site"><b>Описание:</b> {{ site.description }}</div>
+        <div class="info-site"><b>Ключевые слова:</b> {{ site.keywords }}</div>
+        <div class="info-site">Сайт добавлен в очередь на модерацию</div>
+    </div>
+{% endblock %}

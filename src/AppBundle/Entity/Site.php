@@ -92,6 +92,13 @@ class Site
      */
     private $passes;
 
+    public function __construct()
+    {
+        $this->setDate(new \DateTime());
+        $this->setIsModerated(0);
+        $this->setPasses(0);
+    }
+
 
     /**
      * Get id
@@ -258,7 +265,6 @@ class Site
     public function setDate($date)
     {
         $this->date = $date;
-
         return $this;
     }
 
