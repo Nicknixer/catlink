@@ -12,9 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Site;
-use Symfony\Component\HttpFoundation\Response;
 
 class SiteController extends Controller
 {
@@ -38,7 +36,7 @@ class SiteController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('AppBundle:Default:showsite.html.twig', [
+        return $this->render('AppBundle:Site:showsite.html.twig', [
             'site' => $site,
             'category' => $site->getCategory()
         ]);
