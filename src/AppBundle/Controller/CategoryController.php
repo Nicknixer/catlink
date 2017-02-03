@@ -30,7 +30,7 @@ class CategoryController extends Controller
             return $site->getIsModerated() == 1;
         }); // Get moderated sites
 
-        return $this->render('AppBundle:Default:showcategory.html.twig', [
+        return $this->render('AppBundle:Category:showcategory.html.twig', [
             'category' => $category,
             'sites' => $sites
 
