@@ -1,6 +1,6 @@
 <?php
 
-namespace PagesBundle\Controller;
+namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -26,7 +26,7 @@ class PageController extends Controller
                 'id' => 'ASC'
             ], 5); // Last 5 sites
 
-        return $this->render('PagesBundle:Default:homepage.html.twig', [
+        return $this->render('AppBundle:Page:homepage.html.twig', [
             'sites' => $sites
         ]);
     }
@@ -36,7 +36,7 @@ class PageController extends Controller
      */
     public function aboutAction()
     {
-        return $this->render('PagesBundle:Default:about.html.twig');
+        return $this->render('AppBundle:Page:about.html.twig');
     }
 
     /**
@@ -44,7 +44,7 @@ class PageController extends Controller
      */
     public function rulesAction()
     {
-        return $this->render('PagesBundle:Default:rules.html.twig');
+        return $this->render('AppBundle:Page:rules.html.twig');
     }
 
     /**
@@ -73,11 +73,11 @@ class PageController extends Controller
                 $user_message
             );
 
-            return $this->render('PagesBundle:Default:feedback_success.html.twig', [
+            return $this->render('AppBundle:Page:feedback_success.html.twig', [
                 'name' => $user_name
             ]);
         }
-        return $this->render('PagesBundle:Default:feedback.html.twig', [
+        return $this->render('AppBundle:Page:feedback.html.twig', [
             'form' => $form->createView()
         ]);
     }
