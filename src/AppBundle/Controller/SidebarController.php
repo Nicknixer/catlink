@@ -15,7 +15,7 @@ class SidebarController extends Controller
      */
     public function showSidebarAction()
     {
-        return $this->render('AppBundle:Default:sidebar.html.twig',[
+        return $this->render('AppBundle:Sidebar:sidebar.html.twig',[
             'sitesAmount' => $this->getSiteAmount(),
             'lastSite' => $this->getLastSite(),
             'categories' => $this->getAllCategory(),
