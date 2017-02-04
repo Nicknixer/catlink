@@ -19,4 +19,19 @@ class PageControllerTest extends WebTestCase
             $crawler->filter('html:contains("каталог")')->count()
         );
     }
+
+    // Testing about page
+    public function testAbout()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/about');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('html:contains("О сайте")')->count()
+        );
+    }
 }
