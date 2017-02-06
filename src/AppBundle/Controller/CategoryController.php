@@ -12,8 +12,7 @@ class CategoryController extends Controller
 
     /**
      *
-     *
-     * @Route("/category/{id}", name="showCategory")
+     * @Route("/category/{id}", requirements={"id" = "\d+"}, defaults={"id" = -1}, name="showCategory")
      *
      */
     public function showCategoryAction($id)
