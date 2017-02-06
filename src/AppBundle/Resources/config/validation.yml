@@ -1,0 +1,5 @@
+AppBundle\Entity\Site:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: # проверка уникальности
+            fields: [url]
+            message: "Данный сайт уже зарегистрирован в каталоге."

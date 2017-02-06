@@ -7,8 +7,10 @@
     <div class="site-block">
         <div class="title-site"><strong>Добавление сайта</strong></div>
         {{  form_start(form) }}
+        <div>
+            {{ form_errors(form.url) }}
+        </div>
         <div class="info-site">
-            {{ form_errors(form) }}
             <table>
                 <tr>
                     <td>Название: </td>
