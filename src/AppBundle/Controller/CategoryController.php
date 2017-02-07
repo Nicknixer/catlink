@@ -7,15 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+
 class CategoryController extends Controller
 {
 
     /**
-     *
-     * @Route("/category/{id}", requirements={"id" = "\d+"}, defaults={"id" = -1}, name="showCategory")
+     * @Route("/category{trailingSlash}", requirements={"trailingSlash" = "[/]{0,1}"})
+     * @Route("/category/{id}", requirements={"id" = "\d+"}, name="showCategory")
      *
      */
-    public function showCategoryAction($id)
+    public function showCategoryAction($id = -1)
     {
         $category = $this->getDoctrine()
             ->getRepository('AppBundle:Category')
