@@ -23,3 +23,14 @@ $ php bin/console doctrine:database:create
 - now you are ready to run the server
 
 $ php bin/console server:run
+
+
+##Tests
+
+To load test data to database:
+
+$ php bin/console doctrine:fixtures:load
+
+To run the tests:
+
+$ phpunit
