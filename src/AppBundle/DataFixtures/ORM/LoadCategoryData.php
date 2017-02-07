@@ -26,6 +26,7 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
             $category->setName($name);
             $category->setDescription("Sites with ".$name);
             $manager->persist($category);
+            $this->addReference($name, $category); // For using in LoadSiteData.php
         }
         $manager->flush();
     }
