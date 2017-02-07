@@ -19,11 +19,11 @@ class SiteController extends Controller
 
     /**
      *
-     *
+     * @Route("/site{trailingSlash}", requirements={"trailingSlash" = "[/]{0,1}"})
      * @Route("/site/{id}", name="showSite")
      *
      */
-    public function showSiteAction($id)
+    public function showSiteAction($id = -1)
     {
         $site = $this->getDoctrine()
             ->getRepository('AppBundle:Site')
