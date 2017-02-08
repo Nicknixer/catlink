@@ -95,6 +95,7 @@ class LoadSiteData extends AbstractFixture implements OrderedFixtureInterface
             $site->setPasses(0);
             $site->setCategory($this->getReference('Downloads'));
             $manager->persist($site);
+            $this->addReference($siteData['title'], $site);
         }
         $manager->flush();
 
