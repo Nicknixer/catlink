@@ -12,7 +12,7 @@ class CategoryControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/category/-1');
+        $client->request('GET', '/category/');
 
         // Assert that the response is a redirect to /
         $this->assertTrue(
