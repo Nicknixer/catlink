@@ -73,6 +73,11 @@ class Site
     private $category;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="site")
+     */
+    private $comments;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
@@ -349,5 +354,39 @@ class Site
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     *
+     * @return Site
+     */
+    public function addComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function removeComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
