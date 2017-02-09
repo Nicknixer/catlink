@@ -38,7 +38,8 @@ class SiteController extends Controller
 
         return $this->render('AppBundle:Site:showsite.html.twig', [
             'site' => $site,
-            'category' => $site->getCategory()
+            'category' => $site->getCategory(),
+            'comments' => $site->getComments()
         ]);
     }
 
