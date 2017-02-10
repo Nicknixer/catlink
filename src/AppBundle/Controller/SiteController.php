@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Site;
+use AppBundle\Form\CommentType;
 
 class SiteController extends Controller
 {
@@ -97,11 +98,7 @@ class SiteController extends Controller
     {
         $comment = new Comment();
         $comment->setSite($site);
-        $form = $this->createFormBuilder($comment)
-            ->add('name', TextType::class)
-            ->add('message', TextareaType::class)
-            ->add('add', SubmitType::class, array('label' => 'Добавить комментарий'))
-            ->getForm();
+        $form = $this->createForm(CommentType::class, $comment);
         return $this->render('AppBundle:Site:commentform.html.twig', array(
             'site' => $site,
             'form' => $form->createView(),
@@ -117,14 +114,9 @@ class SiteController extends Controller
     {
         $comment = new Comment();
         $comment->setSite($site);
-        $form = $this->createFormBuilder($comment)
-            ->add('name', TextType::class)
-            ->add('message', TextareaType::class)
-            ->add('add', SubmitType::class, array('label' => 'Добавить комментарий'))
-            ->getForm();
-
-
+        $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $form->getData();
             $em = $this->getDoctrine()->getManager();
