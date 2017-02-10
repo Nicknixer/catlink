@@ -25,5 +25,6 @@
         {% else %}
             <div class="info-site">Отзывов пока нет.</div>
         {% endfor %}
+        {{ render(controller('AppBundle:Site:commentForm', { 'id': site.id })) }}
     </div>
 {% endblock %}

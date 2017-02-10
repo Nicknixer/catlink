@@ -1,0 +1,17 @@
+{{  form_start(form, { method: 'POST', action: path('addComment', { 'id': site.id }) }) }}
+<div class="info-site">
+    <table>
+        <tr>
+            <td>Имя: </td>
+            <td>{{ form_widget(form.name) }}</td>
+        </tr>
+        <tr>
+            <td>Сообщение:</td>
+            <td>{{ form_widget(form.message) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_widget(form.add) }}</td>
+        </tr>
+    </table>
+</div>
+{{ form_end(form) }}

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Comment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -36,10 +37,12 @@ class SiteController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
+
+
         return $this->render('AppBundle:Site:showsite.html.twig', [
             'site' => $site,
             'category' => $site->getCategory(),
-            'comments' => $site->getComments()
+            'comments' => $site->getComments(),
         ]);
     }
 
@@ -84,5 +87,50 @@ class SiteController extends Controller
         return $this->render('AppBundle:Site:addSite.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     *
+     *
+     */
+    public function commentFormAction(Request $request, Site $site)
+    {
+        $comment = new Comment();
+        $comment->setSite($site);
+        $form = $this->createFormBuilder($comment)
+            ->add('name', TextType::class)
+            ->add('message', TextareaType::class)
+            ->add('add', SubmitType::class, array('label' => 'Добавить комментарий'))
+            ->getForm();
+        return $this->render('AppBundle:Site:commentform.html.twig', array(
+            'site' => $site,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     *
+     * @Route("/site/{id}/add", name="addComment")
+     *
+     */
+    public function addCommentAction(Request $request, Site $site)
+    {
+        $comment = new Comment();
+        $comment->setSite($site);
+        $form = $this->createFormBuilder($comment)
+            ->add('name', TextType::class)
+            ->add('message', TextareaType::class)
+            ->add('add', SubmitType::class, array('label' => 'Добавить комментарий'))
+            ->getForm();
+
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+            return $this->redirectToRoute('showSite', ['id' => $site->getId()]);
+        }
     }
 }
