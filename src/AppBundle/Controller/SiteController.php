@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Site;
 use AppBundle\Form\CommentType;
+use AppBundle\Form\SiteType;
 
 class SiteController extends Controller
 {
@@ -56,22 +57,7 @@ class SiteController extends Controller
     {
         $site = new Site();
         $site->setTitle("Название");
-        $form = $this->createFormBuilder($site)
-            ->add('title', TextType::class)
-            ->add('url', UrlType::class)
-            ->add('email', EmailType::class)
-            ->add('category', ChoiceType::class, [
-                'choices' => $this->getDoctrine()->getRepository('AppBundle:Category')->findAll(),
-                'choice_label' => function($category, $key, $index) {
-                    return $category->getName();
-                }
-            ])
-            ->add('shortDescription', TextareaType::class)
-            ->add('description', TextareaType::class)
-            ->add('keywords', TextType::class)
-            ->add('add', SubmitType::class, array('label' => 'Добавить'))
-            ->getForm();
-
+        $form = $this->createForm(SiteType::class, $site);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

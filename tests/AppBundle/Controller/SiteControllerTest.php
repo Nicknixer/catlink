@@ -22,15 +22,15 @@ class SiteControllerTest extends WebTestCase
         );
 
         // Test form
-        $form = $crawler->selectButton('form[add]')->form();
+        $form = $crawler->selectButton('site[add]')->form();
         $crawler = $client->submit($form, [
-            'form[title]' => 'Test site',
-            'form[email]' => 'test@test.ru',
-            'form[url]' => $this->generateRandomUrl(),
-            'form[category]' => 0,
-            'form[shortDescription]' => 'Test short description',
-            'form[description]' => 'Test description',
-            'form[keywords]' => 'key, words',
+            'site[title]' => 'Test site',
+            'site[email]' => 'test@test.ru',
+            'site[url]' => $this->generateRandomUrl(),
+            'site[category]' => 91,
+            'site[shortDescription]' => 'Test short description',
+            'site[description]' => 'Test description',
+            'site[keywords]' => 'key, words',
         ]);
 
         // After sending site must show site's info
