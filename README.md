@@ -2,6 +2,16 @@
 
 Nicknixer/linkcat based on Symfony Framework
 
+##Some screenshots
+
+Homepage
+
+![alt tag](http://s8.hostingkartinok.com/uploads/images/2017/02/26c4ac4a88fac1e53b2006cb338736bf.png)
+
+Sitepage
+
+![alt tag](http://s8.hostingkartinok.com/uploads/images/2017/02/7c95f2a922da785f1f0f25dec5195e3f.png)
+
 ##Installing and setting up
 
 - clone the repo 
