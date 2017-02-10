@@ -18,13 +18,13 @@
 
     <div class="site-block">
         <div class="title-site">
-            <strong>Отзывы о сайте</strong>
+            <strong>Комментарии о сайте</strong>
         </div>
         {% for comment in comments %}
             <div class="info-site"><b>{{ comment.name }}</b>: {{ comment.message }} ({{ comment.date|date("d/m/Y") }})</div>
         {% else %}
-            <div class="info-site">Отзывов пока нет.</div>
+            <div class="info-site">Комментариев пока нет.</div>
         {% endfor %}
-        {{ render(controller('AppBundle:Site:commentForm', { 'id': site.id })) }}
     </div>
+    {{ render(controller('AppBundle:Site:commentForm', { 'id': site.id })) }}
 {% endblock %}

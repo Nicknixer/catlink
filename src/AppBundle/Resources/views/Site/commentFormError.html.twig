@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - {{ site.shortdescription }}{% endblock %}
+{% block meta_description %}{{ site.shortdescription }}{% endblock %}
+{% block meta_keywords %}{{ site.keywords }}{% endblock %}
+{% block body %}
+    <div class="site-block">
+        <div class="title-site"><strong>Добавление комментария</strong></div>
+        {{  form_start(form, { method: 'POST', action: path('addComment', { 'id': site.id }) }) }}
+        <div>
+            {{ form_errors(form.name) }}
+            {{ form_errors(form.message) }}
+        </div>
+        <div class="info-site">
+            <table>
+                <tr>
+                    <td>Имя: </td>
+                    <td>{{ form_widget(form.name) }}</td>
+                </tr>
+                <tr>
+                    <td>Сообщение:</td>
+                    <td>{{ form_widget(form.message) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_widget(form.add) }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

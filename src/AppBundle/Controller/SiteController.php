@@ -78,6 +78,7 @@ class SiteController extends Controller
 
     /**
      *
+     * Rendering comment form
      *
      */
     public function commentFormAction(Request $request, Site $site)
@@ -110,5 +111,9 @@ class SiteController extends Controller
             $em->flush();
             return $this->redirectToRoute('showSite', ['id' => $site->getId()]);
         }
+        return $this->render('AppBundle:Site:commentFormError.html.twig', [
+            'site' => $site,
+            'form' => $form->createView(),
+        ]);
     }
 }

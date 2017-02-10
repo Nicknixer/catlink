@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -25,6 +26,13 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)
+     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Имя должно быть не короче {{ limit }} символов",
+     *      maxMessage = "Имя должно быть не длиннее {{ limit }} символов"
+     * )
      */
     private $name;
 
@@ -32,6 +40,13 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="message", type="string", length=1023)
+     *
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 1023,
+     *      minMessage = "Сообщение должно быть не короче {{ limit }} символов",
+     *      maxMessage = "Сообщение должно быть не длиннее {{ limit }} символов"
+     * )
      */
     private $message;
 
