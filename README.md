@@ -30,6 +30,14 @@ $ php composer.phar install
 
 $ php bin/console doctrine:database:create
 
+- add tables to DB
+
+$ php bin/console doctrine:schema:update --force
+
+- add test data to DB, if you need
+
+$ php bin/console doctrine:fixtures:load
+
 - now you are ready to run the server
 
 $ php bin/console server:run
