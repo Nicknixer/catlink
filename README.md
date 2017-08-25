@@ -26,6 +26,10 @@ or
 
 $ php composer.phar install 
 
+- install js dependency
+
+$ bower install ./vendor/sonata-project/admin-bundle/bower.json
+
 - create database. (Maybe you'll need to configure your database connection information in app/config/parameters.yml)
 
 $ php bin/console doctrine:database:create
