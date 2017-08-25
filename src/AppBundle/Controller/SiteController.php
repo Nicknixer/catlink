@@ -66,7 +66,7 @@ class SiteController extends Controller
      * Rendering comment form
      *
      */
-    public function commentFormAction(Request $request, Site $site)
+    public function commentFormAction(Site $site)
     {
         $comment = new Comment();
         $comment->setSite($site);
