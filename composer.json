@@ -22,7 +22,8 @@
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "sonata-project/doctrine-orm-admin-bundle": "^3.1"
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "doctrine/doctrine-migrations-bundle": "1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
