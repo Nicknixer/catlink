@@ -17,3 +17,8 @@ services:
         arguments: [~, AppBundle\Entity\Site, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Site }
+    admin.settings:
+        class: AppBundle\Admin\SettingsAdmin
+        arguments: [~, AppBundle\Entity\Settings, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Settings }
