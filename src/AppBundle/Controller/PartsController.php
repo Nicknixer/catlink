@@ -68,9 +68,19 @@ class PartsController extends Controller
 
     public function showFooterAction()
     {
+        $copy = $this->getDoctrine()
+            ->getRepository('AppBundle:Settings')
+            ->findOneBy(['name' => 'copy'])
+            ->getValue();
+
+        $footerDescription = $this->getDoctrine()
+            ->getRepository('AppBundle:Settings')
+            ->findOneBy(['name' => 'footerDescription'])
+            ->getValue();
+
         return $this->render('AppBundle:Parts:footer.html.twig',[
-            'copy' => 'Copy',
-            'footerDescription' => 'Footer description',
+            'copy' => $copy,
+            'footerDescription' => $footerDescription,
         ]);
     }
 }
