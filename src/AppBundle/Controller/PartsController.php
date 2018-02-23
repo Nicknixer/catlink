@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class SidebarController extends Controller
+class PartsController extends Controller
 {
 
     /**
@@ -15,7 +15,7 @@ class SidebarController extends Controller
      */
     public function showSidebarAction()
     {
-        return $this->render('AppBundle:Sidebar:sidebar.html.twig',[
+        return $this->render('AppBundle:Parts:sidebar.html.twig',[
             'sitesAmount' => $this->getSiteAmount(),
             'lastSite' => $this->getLastSite(),
             'categories' => $this->getAllCategory(),
@@ -64,5 +64,23 @@ class SidebarController extends Controller
             [],
             ['name' => 'ASC']
         );
+    }
+
+    public function showFooterAction()
+    {
+        $copy = $this->getDoctrine()
+            ->getRepository('AppBundle:Settings')
+            ->findOneBy(['name' => 'copy'])
+            ->getValue();
+
+        $footerDescription = $this->getDoctrine()
+            ->getRepository('AppBundle:Settings')
+            ->findOneBy(['name' => 'footerDescription'])
+            ->getValue();
+
+        return $this->render('AppBundle:Parts:footer.html.twig',[
+            'copy' => $copy,
+            'footerDescription' => $footerDescription,
+        ]);
     }
 }

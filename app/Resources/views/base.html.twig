@@ -41,7 +41,7 @@
 		{% block sidebar %}
 			<div class="left-side-bar">
 				{{ render(controller(
-					'AppBundle:Sidebar:showSidebar'
+					'AppBundle:Parts:showSidebar'
 				)) }}
 			</div>
 		{% endblock %}
@@ -53,20 +53,9 @@
 		</div>
 	</div>
 	{% block footer %}
-	<footer>
-		<div class="bottom-phone">
-			&copy; "Linkcat" Все права защищены.
-		</div>
-		<div class="bottom-copy">
-			<div class="bottom-logo"><img src="{{ asset('libs/logo.png') }}" width="30px" height="30px" align="middle"/></div>
-			<div class="bottom-text">
-					<a href="http://nicknixer.ru">Разработка сайта</a>
-					<br/>
-					Записки информационщика
-			</div>
-		</div>
-	</footer>
+        {{ render(controller('AppBundle:Parts:showFooter')) }}
 	{% endblock %}
+
 	{% block javascripts %}{% endblock %}
     </body>
 </html>
