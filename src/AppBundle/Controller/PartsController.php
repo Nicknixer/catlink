@@ -69,8 +69,8 @@ class PartsController extends Controller
     public function showFooterAction()
     {
         return $this->render('AppBundle:Parts:footer.html.twig',[
-            'sitesAmount' => $this->getSiteAmount(),
-            'lastSite' => $this->getLastSite(),
+            'copy' => 'Copy',
+            'footerDescription' => 'Footer description',
         ]);
     }
 }
