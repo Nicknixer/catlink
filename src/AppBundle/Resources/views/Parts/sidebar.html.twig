@@ -1,23 +1,5 @@
 {% if categories[0] is defined %}
-    <div class="left-side-menu">Категории</div>
     {% for category in categories %}
-        <div class="left-side-items">
-            <a href="{{ path('showCategory', {'id': category.id}) }}">{{ category.name }}</a>
-        </div>
-     {% endfor %}
-{% endif %}
-<div class="left-side-menu">Статистика</div>
-<div class="left-side-items">
-    <span class="color-corn">Добавлено сайтов:</span> {{ sitesAmount }}
-</div>
-<!--
-<div class="left-side-items">
-    <span class="color-corn">Комментариев:</span> 0
-</div>
--->
-{% if lastSite.id is defined %}
-<div class="left-side-items">
-    <span class="color-corn">Последний сайт:</span>
-    <a style="text-decoration: underline;" href="{{ path('showSite', {'id': lastSite.id}) }}">{{ lastSite.title }}</a>
-</div>
+        <a class="dropdown-item" href="{{ path('showCategory', {'id': category.id}) }}">{{ category.name }}</a>
+    {% endfor %}
 {% endif %}
