@@ -3,7 +3,9 @@
 {% block meta_description %}{{ site.shortdescription }}{% endblock %}
 {% block meta_keywords %}{{ site.keywords }}{% endblock %}
 {% block breadcrumbs %}
-        {{ parent() }} / <a href="{{ path('showCategory', {'id': category.id}) }}">{{ category.name }}</a> / {{ site.title|slice(0,20) }}...
+    {{ parent() }}
+    <li class="breadcrumb-item"><a href="{{ path('showCategory', {'id': category.id}) }}">{{ category.name }}</a></li>
+    <li class="breadcrumb-item active">{{ site.title|slice(0,20) }}</li>
 {% endblock %}
 {% block body %}
     <div class="site-block">

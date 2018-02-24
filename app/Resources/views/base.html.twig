@@ -36,10 +36,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('about') }}">Реклама</a>
-                </li>
-
-                <li class="nav-item">
                     <a class="btn btn-outline-success" href="{{ path('addSite') }}">Добавить сайт</a>
                 </li>
             </ul>
@@ -49,18 +45,19 @@
             </form>
         </div>
     </nav>
-	<div class="content">
-		<!-- title top  class="title-top"-->
-		<div  style=" font-size: 14px; padding: 5px;">
-			{% block breadcrumbs %}<a href="{{ path('homepage') }}">Главная</a>{% endblock %}
-		</div>
-		<div class="page">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% block breadcrumbs %}
+                <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Главная</a></li>
+            {% endblock %}
+        </ol>
+    </nav>
+
+
 
 			{% block body %}
 				Body
 			{% endblock %}
-		</div>
-	</div>
 	{% block footer %}
         {{ render(controller('AppBundle:Parts:showFooter')) }}
 	{% endblock %}
