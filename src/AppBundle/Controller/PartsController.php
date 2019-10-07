@@ -78,9 +78,15 @@ class PartsController extends Controller
             ->findOneBy(['name' => 'footerDescription'])
             ->getValue();
 
+        $footerRawCode = $this->getDoctrine()
+            ->getRepository('AppBundle:Settings')
+            ->findOneBy(['name' => 'footerRawCode'])
+            ->getValue();
+
         return $this->render('AppBundle:Parts:footer.html.twig',[
             'copy' => $copy,
             'footerDescription' => $footerDescription,
+            'footerRawCode' => $footerRawCode,
         ]);
     }
 }
