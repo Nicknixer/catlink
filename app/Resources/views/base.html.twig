@@ -13,55 +13,58 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('libs/e-book.png') }}" />
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Linkcat</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Linkcat</a>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Категории
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">sad</a>
-                        {{ render(controller(
-                            'AppBundle:Parts:showSidebar'
-                        )) }}
-                    </div>
-                </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('feedback') }}">Обратная связь</a>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Категории
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">sad</a>
+                            {{ render(controller(
+                                'AppBundle:Parts:showSidebar'
+                            )) }}
+                        </div>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="btn btn-outline-success" href="{{ path('addSite') }}">Добавить сайт</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            {% block breadcrumbs %}
-                <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Главная</a></li>
-            {% endblock %}
-        </ol>
-    </nav>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('feedback') }}">Обратная связь</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success" href="{{ path('addSite') }}">Добавить сайт</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% block breadcrumbs %}
+                    <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Главная</a></li>
+                {% endblock %}
+            </ol>
+        </nav>
 
-			{% block body %}
-				Body
-			{% endblock %}
-	{% block footer %}
-        {{ render(controller('AppBundle:Parts:showFooter')) }}
-	{% endblock %}
+        {% block body %}
+            Body
+        {% endblock %}
 
+        {% block footer %}
+            {{ render(controller('AppBundle:Parts:showFooter')) }}
+        {% endblock %}
+
+    </div>
 	{% block javascripts %}
         <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>

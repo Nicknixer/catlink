@@ -5,12 +5,18 @@
     <li class="breadcrumb-item">{{ category.name }}</li>
 {% endblock %}
 {% block body %}
-    <div class="site-block"><div class="title-site">Сайты из категории <strong>{{ category.name }}</strong></div>
-        {% for site in sites %}
-            <div class="info-site"><a href="{{ path('showSite', {'id': site.id}) }}"><strong>{{ site.title }}</strong></a></div>
-            <div class="info-site">{{ site.shortdescription }}</div>
-        {% else %}
-            <div class="info-site">Сайтов в данной категории пока нет.</div>
-        {% endfor %}
-    </div>
+    <h1>Сайты из категории <strong>{{ category.name }}</h1>
+    {% for site in sites %}
+
+        <a href="{{ path('showSite', {'id': site.id}) }}"
+           class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ site.title }}</h5>
+                <small>{{ site.comments|length }} comments</small>
+            </div>
+            <p class="mb-1">{{ site.shortdescription }}</p>
+        </a>
+    {% else %}
+        <p>Сайтов в данной категории пока нет.</p>
+    {% endfor %}
 {% endblock %}

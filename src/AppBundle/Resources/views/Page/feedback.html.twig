@@ -5,28 +5,29 @@
 	<li class="breadcrumb-item">Обратная связь</li>
 {% endblock %}
 {% block body %}
-<div class="site-block">
-	<div class="title-site"><strong>Обратная связь</strong></div>
-	{{  form_start(form) }}
-	<div class="info-site">
-	    <table>
-			<tr>
-				<td>Имя: </td>
-				<td>{{ form_widget(form.name) }}</td>
-			</tr>
-			<tr>
-				<td>Email: </td>
-				<td>{{ form_widget(form.email) }}</td>
-			</tr>
-			<tr>
-				<td>Сообщение:</td>
-				<td>{{ form_widget(form.message) }}</td>
-			</tr>
-			<tr>
-				<td>{{ form_widget(form.send) }}</td>
-			</tr>
-		</table>
+
+<h1>Обратная связь</h1>
+
+{{  form_start(form) }}
+
+
+	<div class="form-group">
+		<label>Имя</label>
+		{{ form_widget(form.name, {'attr': {'class': 'form-control'}})}}
 	</div>
-	{{ form_end(form) }}
-</div>
+
+	<div class="form-group">
+		<label>Email address</label>
+		{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	<div class="form-group">
+		<label>Сообщение</label>
+		{{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_widget(form.send, {'attr': {'class': 'form-control btn btn-primary'}}) }}
+	</div>
+{{ form_end(form) }}
 {% endblock %}

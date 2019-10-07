@@ -3,24 +3,30 @@
 {% block breadcrumbs %}
 {% endblock %}
 {% block body %}
-    <div class="site-block">
-        <div class="title-site"><b>Добро пожаловать в белый каталог сайтов!</b></div>
-        <div class="info-site">
-            Перед вами модерируемый <strong>белый каталог сайтов</strong>.<br />
-            В рунете тысячи белых каталогов сайтов, но этот <strong>особенный</strong>!<br />
-            Вы совершенно бесплатно можете <strong>добавить свой сайт в каталог</strong> и он появится в списке.<br />
-            Добавление сайта в белый каталог позволяет совершенно бесплатно получить обратную ссылку на ваш сайт!<br />
-            Это очень полезно для SEO-оптимизации вашего сайта.<br />
-            Вперед! Добавьте свой сайт.
-        </div>
-    </div>
-    {% if sites[0] is defined %}
-        <div class="site-block"><div class="title-site"><b>Самые популярные в каталоге</b></div>
-            {% for site in sites %}
-                    <div class="info-site"><a href="{{ path('showSite', {'id': site.id}) }}"><strong>{{ site.title }}</strong></a></div>
-                    <div class="info-site">{{ site.shortdescription }}</div>
-            {% endfor %}
-        </div>
+    <h1>Добро пожаловать в белый каталог сайтов!</h1>
+    <p>
+        Перед вами модерируемый <strong>белый каталог сайтов</strong>.<br />
+        В рунете тысячи белых каталогов сайтов, но этот <strong>особенный</strong>!<br />
+        Вы совершенно бесплатно можете <strong>добавить свой сайт в каталог</strong> и он появится в списке.<br />
+        Добавление сайта в белый каталог позволяет совершенно бесплатно получить обратную ссылку на ваш сайт!<br />
+        Это очень полезно для SEO-оптимизации вашего сайта.<br />
+        Вперед! Добавьте свой сайт.
+    </p>
+    {% if sites %}
+        <h2>Самые популярные в каталоге</h2>
+        <ul class="list-group">
+        {% for site in sites %}
+            <a href="{{ path('showSite', {'id': site.id}) }}"
+               class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ site.title }}</h5>
+                    <small>{{ site.passes }} passes</small>
+                </div>
+                <p class="mb-1">{{ site.shortdescription }}</p>
+                <small>{{ site.category.name }}</small>
+            </a>
+        {% endfor %}
+        </ul>
     {% endif %}
 
 {% endblock %}
