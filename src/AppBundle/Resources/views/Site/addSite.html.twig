@@ -1,50 +1,52 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ parent() }} - Добавление сайта{% endblock %}
 {% block breadcrumbs %}
-    {{ parent() }} / Добавление сайта...
+    {{ parent() }}
+    <li class="breadcrumb-item">Добавление сайта</li>
 {% endblock %}
 {% block body %}
-    <div class="site-block">
-        <div class="title-site"><strong>Добавление сайта</strong></div>
-        {{  form_start(form) }}
-        <div>
-            {{ form_errors(form.url) }}
-        </div>
-        <div class="info-site">
-            <table>
-                <tr>
-                    <td>Название: </td>
-                    <td>{{ form_widget(form.title) }}</td>
-                </tr>
-                <tr>
-                    <td>E-mail:</td>
-                    <td>{{ form_widget(form.email) }}</td>
-                </tr>
-                <tr>
-                    <td>URL: </td>
-                    <td>{{ form_widget(form.url) }}</td>
-                </tr>
-                <tr>
-                    <td>Категория:</td>
-                    <td>{{ form_widget(form.category) }}</td>
-                </tr>
-                <tr>
-                    <td>Короткое описание:</td>
-                    <td>{{ form_widget(form.shortDescription) }}</td>
-                </tr>
-                <tr>
-                    <td>Полное описание:</td>
-                    <td>{{ form_widget(form.description) }}</td>
-                </tr>
-                <tr>
-                    <td>Ключевые слова:</td>
-                    <td>{{ form_widget(form.keywords) }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form_widget(form.add) }}</td>
-                </tr>
-            </table>
-        </div>
-        {{ form_end(form) }}
+<h1>Добавление сайта</h1>
+{{  form_start(form) }}
+    <div>
+        {{ form_errors(form.url) }}
     </div>
+    <div class="form-group">
+        <label>Название</label>
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        <label>E-mail</label>
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        <label>URL</label>
+        {{ form_widget(form.url, {'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        <label>Категория</label>
+        {{ form_widget(form.category, {'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        <label>Короткое описание</label>
+        {{ form_widget(form.shortDescription, {'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        <label>Полное описание</label>
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        <label>Ключевые слова</label>
+        {{ form_widget(form.keywords, {'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.add, {'attr': {'class': 'form-control btn btn-primary'}})}}
+    </div>
+{{ form_end(form) }}
 {% endblock %}

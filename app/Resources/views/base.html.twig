@@ -5,57 +5,69 @@
 		<meta name="description"  content="{% block meta_description %}Белый каталог сайтов, добавьте свой сайт бесплатно.{% endblock %}" />
 		<meta name="keywords"  content="{% block meta_keywords %}Белый,каталог,сайты,бесплатно{% endblock %}" />
         <title>{% block title %}Linkcat{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% block stylesheets %}
-			<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" />
-			<link rel="stylesheet" href="{{ asset('libs/style.css') }}" />
+			<link rel="stylesheet"
+				  href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
 		{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('libs/e-book.png') }}" />
     </head>
     <body>
-    	<nav>
-		<ul>
-			<li>
-				<a href="{{ path('homepage') }}">ГЛАВНАЯ</a>
-			</li>
-			<li>
-				<a href="{{ path('feedback') }}">ОБРАТНАЯ СВЯЗЬ</a>
-			</li>
-			<li>
-				<a href="{{ path('about') }}">РЕКЛАМА</a>
-			</li>
-			<li>
-				<a href="{{ path('addSite') }}" id="add-site">ДОБАВИТЬ САЙТ</a>
-			</li>
-			<div class="search">
-				<input type="search" name="search" id="searcher" placeholder="Поиск по сайту" />
-				<input id="find" type="button" name="search" value="Найти" />
-			</div>
-		</ul>
 
-	</nav>
-	<div class="content">
-		<!-- title top  class="title-top"-->
-		<div  style=" font-size: 14px; padding: 5px;">
-			{% block breadcrumbs %}<a href="{{ path('homepage') }}">Главная</a>{% endblock %}
-		</div>
-		{% block sidebar %}
-			<div class="left-side-bar">
-				{{ render(controller(
-					'AppBundle:Parts:showSidebar'
-				)) }}
-			</div>
-		{% endblock %}
-		<div class="page">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Linkcat</a>
 
-			{% block body %}
-				Body
-			{% endblock %}
-		</div>
-	</div>
-	{% block footer %}
-        {{ render(controller('AppBundle:Parts:showFooter')) }}
-	{% endblock %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
 
-	{% block javascripts %}{% endblock %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Категории
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">sad</a>
+                            {{ render(controller(
+                                'AppBundle:Parts:showSidebar'
+                            )) }}
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('feedback') }}">Обратная связь</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success" href="{{ path('addSite') }}">Добавить сайт</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% block breadcrumbs %}
+                    <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Главная</a></li>
+                {% endblock %}
+            </ol>
+        </nav>
+
+        {% block body %}
+            Body
+        {% endblock %}
+
+        {% block footer %}
+            {{ render(controller('AppBundle:Parts:showFooter')) }}
+        {% endblock %}
+
+    </div>
+	{% block javascripts %}
+        <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
     </body>
 </html>

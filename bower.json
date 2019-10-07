@@ -1,0 +1,22 @@
+{
+  "name": "catlink",
+  "homepage": "https://github.com/Nicknixer/catlink",
+  "authors": [
+    "Nikolay Sergeychuk <nicknixer@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
+  }
+}
