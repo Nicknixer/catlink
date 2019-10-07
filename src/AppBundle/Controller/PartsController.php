@@ -22,6 +22,18 @@ class PartsController extends Controller
         ]);
     }
 
+    public function showHeaderRawCodeAction()
+    {
+        $headerRawCode = $this->getDoctrine()
+            ->getRepository('AppBundle:Settings')
+            ->findOneBy(['name' => 'headerRawCode'])
+            ->getValue();
+
+        return $this->render('AppBundle:Parts:headerRawCode.html.twig',[
+            'headerRawCode' => $headerRawCode,
+        ]);
+    }
+
     /*
      * Count all moderated sites
      * @return Integer - site amount
